@@ -7,7 +7,10 @@ import { Task } from '$prisma/client'
 import UserBanner from '~/components/UserBanner'
 
 const Home = () => {
-  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks)
+  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(
+    apiClient.tasks,
+    { query: { limit: 10 } }
+  )
   const [label, setLabel] = useState('')
   const inputLavel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
@@ -71,12 +74,12 @@ const Home = () => {
                   />
                   <span>{task.label}</span>
                 </label>
-                <input
+                {/* <input
                   type="button"
                   value="DELETE"
                   style={{ float: 'right' }}
                   onClick={() => deleteTask(task)}
-                />
+                /> */}
               </li>
             ))}
           </ul>

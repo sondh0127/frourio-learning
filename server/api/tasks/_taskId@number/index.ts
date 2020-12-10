@@ -8,4 +8,7 @@ export type Methods = {
   delete: {
     status: 204
   }
+  get: {
+    resBody: Task
+  }
 }

@@ -16,3 +16,6 @@ export const updateTask = (
 
 export const deleteTask = (id: Task['id']) =>
   prisma.task.delete({ where: { id } })
+
+export const findTask = (id: Task['id']) =>
+  prisma.task.findUnique({ where: { id } })
