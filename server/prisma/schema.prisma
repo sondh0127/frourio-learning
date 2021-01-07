@@ -12,3 +12,18 @@ model Task {
   label String
   done  Boolean @default(false)
 }
+
+model Project {
+  id                      Int      @id @default(autoincrement())
+  // userId string
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  name                    String
+  description             String
+  guideline               String?
+  // projectType ProjectType
+  published               Boolean  @default(false)
+  randomizeDocumentOrder  Boolean  @default(false)
+  collaborativeAnnotation Boolean  @default(false)
+  annotatorPerExample     Int      @default(3)
+}

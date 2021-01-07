@@ -13,3 +13,25 @@ export type Task = {
   label: string
   done: boolean
 }
+
+export enum ProjectType {
+  TextClassificationProject = 'Sentiment Analysis',
+  SequenceLabelingProject = 'Named Entity Recognition',
+  Seq2seqProject = 'Translation',
+  PdfLabelingProject = 'PDF Labeling'
+}
+
+export type Project = {
+  id: number
+  // userId: string
+  createdAt: Date
+  updatedAt?: Date
+  name: string
+  description: string
+  guideline: string
+  // projectType: ProjectType
+  published: boolean
+  randomizeDocumentOrder: boolean
+  collaborativeAnnotation: boolean
+  annotatorPerExample: number
+}

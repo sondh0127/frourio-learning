@@ -7,15 +7,11 @@ import { Task } from '$prisma/client'
 import UserBanner from '~/components/UserBanner'
 
 const Home = () => {
-  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(
-    apiClient.tasks,
-    { query: { limit: 10 } }
-  )
+  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks, {
+    query: { limit: 10 }
+  })
   const [label, setLabel] = useState('')
-  const inputLavel = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
-    []
-  )
+  const inputLavel = useCallback((e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value), [])
 
   const createTask = useCallback(
     async (e: FormEvent) => {
@@ -67,11 +63,7 @@ const Home = () => {
             {tasks.map((task) => (
               <li key={task.id}>
                 <label>
-                  <input
-                    type="checkbox"
-                    checked={task.done}
-                    onChange={() => toggleDone(task)}
-                  />
+                  <input type="checkbox" checked={task.done} onChange={() => toggleDone(task)} />
                   <span>{task.label}</span>
                 </label>
                 {/* <input
@@ -92,8 +84,7 @@ const Home = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          Powered by <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
